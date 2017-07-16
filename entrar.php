@@ -6,7 +6,10 @@
   </head>
   <body>
     <?php
-      
+      $usuario = $_POST['usuario'];
+      $password = $_POST['password'];
+
+      echo "Eres: ".$usuario." y tu contraseña es: ".$password;
     ?>
   </body>
 </html>
