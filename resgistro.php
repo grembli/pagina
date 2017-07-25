@@ -20,8 +20,12 @@
     $contrasena = $_POST['pass'];
 
     if ($conexion != false) {
-      $resultado = mysql_query("insert into usuarios values ('$nombre','$contrasena','$apellidos','$empresa','$dni')");
+      $resultado = mysql_query("insert into usuarios values ('$nombre','$contrasena','$apellidos','$empresa','$dni','$email')");
     }
+
+      if ($conexion == true) {
+        echo "Usuario creado";
+      }
 
      ?>
 
