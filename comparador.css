@@ -4,3 +4,9 @@
 .identificacion2{
   float:right;
 }
+
+.registrar{
+  visibility: hidden;
+  margin-top: 20px;
+  
+}
