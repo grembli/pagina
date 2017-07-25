@@ -7,28 +7,39 @@
   <body>
     <?php
       $conexion = mysql_connect('127.0.0.1',"root","comunismo");
-      mysql_select_db("prueba",$conexion);
+      mysql_select_db("neumaticos",$conexion);
       $usuario = $_POST['user'];
       $password = $_POST['pass'];
 
       if ($conexion != false) {
 
-        $consulta = mysql_query("select frase1,frase2,frase3 from frases",$conexion);
+        $consulta = mysql_query("select nombre,contrasena from usuarios where nombre=".$usuario.",contrasena=".$password.",",$conexion);
 
       }
-      $var1 = mysql_result($consulta,0,"frase1");
-      $var2 = mysql_result($consulta,0,"frase2");
-      $var3 = mysql_result($consulta,0,"frase3");
 
-      $conjunto = $var1." ".$var2." ".$var3;
-      mysql_free_result($consulta);
-      mysql_close($conexion);
+      $var1 = mysql_result($consulta,0,"nombre");
+      $var2 = mysql_result($consulta,0,"contrasena");
 
-      echo "Eres: ".$usuario." y tu contraseña es: ".$password;
+      if ($var1 == $usuario && $var2 == $password){
 
-      echo "<br/>";
+        echo "Access Granted";
+        echo "<br/>";
+        echo "<a href=pagina_inicio.html>Click Aquí</a>";
 
-      echo "El resultado es: ".$conjunto;
+        mysql_free_result($consulta);
+        mysql_close($conexion);
+      }
+      else {
+        echo "No Eres: ".$usuario"";
+
+        echo "<br/>";
+
+        echo "Tu IP será bloqueada si sigues intentando entrar en la plataforma";
+      }
+
+
+
+
     ?>
   </body>
 </html>
